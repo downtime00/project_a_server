@@ -1,10 +1,24 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
+//# import config folder
+import { typePgORMCofing } from './config/database.config';
+//# import modules folder 
+import { AuthModule } from './module/auth/auth.module';
+import { UserModule } from './module/user/user.module';
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+    //url
+    AuthModule,
+    UserModule,
+    //settings
+    TypeOrmModule.forRoot(typePgORMCofing),
+  ],
+  controllers: [],
+  providers: [],
 })
-export class AppModule {}
+export class AppModule { }
