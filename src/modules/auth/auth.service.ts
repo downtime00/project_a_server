@@ -45,7 +45,7 @@ export class AuthService {
 
         const accessPayload: AccessTokenPayloadDto = new AccessTokenPayloadDto(
             result_getData.value.instance_id,
-            result_getData.value.alias,
+            result_getData.value.username,
             UserRole.USER
         );
 

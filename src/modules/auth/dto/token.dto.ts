@@ -49,8 +49,8 @@ export class AccessTokenPayloadDto implements IAccessPayload {
   @IsNumber()
   role: number;
 
-  constructor(sub: string, username: string, role: number) {
-    this.instance_id = sub;
+  constructor(instance_id: string, username: string, role: number) {
+    this.instance_id = instance_id;
     this.username = username;
     this.role = role;
   }
@@ -65,8 +65,8 @@ export class RefreshTokenPayloadDto implements IRefreshPayload {
   @IsString()
   useragent: string;
 
-  constructor(sub: string, agent: string) {
-    this.instance_id = sub;
+  constructor(instance_id: string, agent: string) {
+    this.instance_id = instance_id;
     this.useragent = agent;
   }
 }
