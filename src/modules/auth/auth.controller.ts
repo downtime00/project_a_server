@@ -46,6 +46,14 @@ export class AuthController {
         return token.access;
     }
 
+    @Post("signout")
+    @Version([VERSION_NEUTRAL, '', '1'])
+    async signOut(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
+        res.clearCookie('refreshToken', { httpOnly: true, path: '/' });
+        res.clearCookie('x-csrf-token', { httpOnly: true, path: '/' });
+        return true;
+    }
+
     @Get('csrf-token')
     @Version([VERSION_NEUTRAL, '', '1'])
     @Roles(UserRole.USER)
