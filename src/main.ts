@@ -7,7 +7,7 @@ async function bootstrap() {
   const port = process.env.APP_PORT || 3000;
   app.setGlobalPrefix('api');
   app.enableCors({
-    origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://downtime00.github.io', 'https://downtime00.github.io'],
+    origin: ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://downtime00.github.io',],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // 쿠키 및 인증 헤더 포함 여부
   });

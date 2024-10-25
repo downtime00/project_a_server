@@ -42,6 +42,7 @@ export class AuthController {
             sameSite: 'none',
             maxAge: 1000 * Number(process.env.JWT_RFRESH_EXP),
             path: '/auth/refresh',
+            domain: 'github.io'
         });
         return token.access;
     }
