@@ -39,7 +39,7 @@ export class AuthController {
         res.cookie('refreshToken', token.refresh, {
             httpOnly: true,
             secure: process.env.ENV_MODE === 'dev' ? false : true,
-            sameSite: 'none',
+            sameSite: 'lax',
             maxAge: 1000 * Number(process.env.JWT_RFRESH_EXP),
             path: '/auth/refresh',
         });
