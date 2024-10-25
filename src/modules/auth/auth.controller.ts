@@ -42,7 +42,6 @@ export class AuthController {
             sameSite: 'none',
             maxAge: 1000 * Number(process.env.JWT_RFRESH_EXP),
             path: '/auth/refresh',
-            domain: 'github.io'
         });
         return token.access;
     }
@@ -50,7 +49,7 @@ export class AuthController {
     @Post("signout")
     @Version([VERSION_NEUTRAL, '', '1'])
     async signOut(@Req() req: Request, @Res({ passthrough: true }) res: Response) {
-        res.clearCookie('refreshToken', { httpOnly: true, path: '/' });
+        res.clearCookie('refreshToken', { httpOnly: true, path: '/auth/refresh' });
         res.clearCookie('x-csrf-token', { httpOnly: true, path: '/' });
         return true;
     }
